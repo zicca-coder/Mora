@@ -1,0 +1,71 @@
+:root {
+  --color-bg: #f7f7f4;
+  --color-surface: #fffffc;
+  --color-surface-muted: #f1f1ed;
+  --color-editor: #fbfbf8;
+  --color-text: #252722;
+  --color-text-strong: #121410;
+  --color-text-muted: #6d7168;
+  --color-text-subtle: #92978d;
+  --color-border: #deded6;
+  --color-border-soft: #ecece5;
+  --color-accent: #2f6f68;
+  --color-accent-strong: #1f5b54;
+  --color-accent-soft: #e4f0ed;
+  --color-danger: #8f332b;
+  --color-danger-bg: #fff1ee;
+  --color-selection: rgba(47, 111, 104, 0.2);
+  --color-focus: rgba(47, 111, 104, 0.34);
+
+  --font-ui: "Segoe UI", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  --font-content: "Segoe UI", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  --font-editor: "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-mono: "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-ui: 13px;
+  --text-body: 16px;
+  --text-editor: 15px;
+
+  --line-content: 1.76;
+  --line-editor: 1.68;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+
+  --toolbar-height: 48px;
+  --status-height: 28px;
+  --content-width: 820px;
+  --transition-fast: 140ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: var(--font-ui);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--color-selection);
+}

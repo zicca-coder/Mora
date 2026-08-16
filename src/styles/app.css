@@ -1,0 +1,329 @@
+.app-shell {
+  display: grid;
+  grid-template-rows: var(--toolbar-height) minmax(0, 1fr) var(--status-height);
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  background: var(--color-bg);
+}
+
+.title-bar {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) auto auto;
+  gap: 14px;
+  align-items: center;
+  min-width: 0;
+  padding: 0 14px 0 16px;
+  border-bottom: 1px solid var(--color-border-soft);
+  background: color-mix(in srgb, var(--color-surface) 88%, var(--color-bg));
+}
+
+.title-identity {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+  gap: 10px;
+}
+
+.app-name {
+  flex: 0 0 auto;
+  color: var(--color-text-strong);
+  font-size: var(--text-ui);
+  font-weight: 720;
+  letter-spacing: 0;
+}
+
+.document-title {
+  overflow: hidden;
+  min-width: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-ui);
+  font-weight: 520;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toolbar,
+.segmented-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tool-button,
+.segmented-control button,
+.menu-item {
+  height: 28px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: var(--text-ui);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.tool-button {
+  padding: 0 8px;
+}
+
+.tool-button:hover,
+.segmented-control button:hover,
+.menu-item:hover {
+  color: var(--color-text-strong);
+  background: var(--color-surface-muted);
+}
+
+.tool-button:focus-visible,
+.segmented-control button:focus-visible,
+.menu-item:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.primary-action {
+  color: var(--color-accent-strong);
+}
+
+.segmented-control {
+  padding: 2px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-muted);
+}
+
+.segmented-control button {
+  min-width: 66px;
+  padding: 0 9px;
+}
+
+.segmented-control button.active {
+  border-color: var(--color-border-soft);
+  color: var(--color-text-strong);
+  background: var(--color-surface);
+}
+
+.more-menu {
+  position: relative;
+}
+
+.more-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  list-style: none;
+}
+
+.more-menu-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.more-menu-content {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  right: 0;
+  display: grid;
+  min-width: 148px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 5px;
+  background: var(--color-surface);
+  box-shadow: 0 12px 28px rgba(34, 35, 30, 0.12);
+}
+
+.menu-item {
+  width: 100%;
+  padding: 0 10px;
+  text-align: left;
+}
+
+.menu-item:disabled {
+  cursor: default;
+  opacity: 0.62;
+}
+
+.menu-item:disabled:hover {
+  color: var(--color-text-muted);
+  background: transparent;
+}
+
+.workspace {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  background: var(--color-bg);
+}
+
+.workspace.mode-split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.workspace.mode-editor,
+.workspace.mode-preview {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pane {
+  min-width: 0;
+  min-height: 0;
+}
+
+.editor-pane {
+  border-right: 1px solid var(--color-border-soft);
+  background: var(--color-editor);
+}
+
+.workspace.mode-editor .editor-pane {
+  border-right: 0;
+}
+
+.preview-pane {
+  overflow: auto;
+  background: var(--color-surface);
+}
+
+.workspace.mode-preview .preview-pane {
+  background: var(--color-surface);
+}
+
+.error-message {
+  position: fixed;
+  right: 18px;
+  bottom: calc(var(--status-height) + 14px);
+  max-width: min(520px, calc(100vw - 36px));
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--color-danger) 34%, var(--color-border));
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  color: var(--color-danger);
+  background: var(--color-danger-bg);
+  box-shadow: 0 10px 24px rgba(34, 35, 30, 0.1);
+  font-size: var(--text-ui);
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  gap: 16px;
+  padding: 0 16px;
+  border-top: 1px solid var(--color-border-soft);
+  color: var(--color-text-subtle);
+  background: color-mix(in srgb, var(--color-surface) 90%, var(--color-bg));
+  font-size: var(--text-sm);
+}
+
+.status-group {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 14px;
+  white-space: nowrap;
+}
+
+.status-group-right {
+  justify-content: flex-end;
+}
+
+.cursor-position {
+  color: var(--color-text-muted);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-text-subtle) 44%, transparent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text-subtle) 42%, transparent);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--color-text-muted) 58%, transparent);
+  background-clip: padding-box;
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-rows: auto minmax(0, 1fr) var(--status-height);
+  }
+
+  .title-bar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "identity mode"
+      "actions actions";
+    gap: 8px 12px;
+    padding: 8px 12px;
+  }
+
+  .title-identity {
+    grid-area: identity;
+  }
+
+  .toolbar {
+    grid-area: actions;
+  }
+
+  .segmented-control {
+    grid-area: mode;
+  }
+
+  .workspace.mode-split {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .workspace.mode-split .editor-pane {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+}
+
+@media (max-width: 640px) {
+  .title-bar {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "identity"
+      "mode"
+      "actions";
+  }
+
+  .toolbar,
+  .segmented-control {
+    width: 100%;
+  }
+
+  .tool-button,
+  .segmented-control button {
+    flex: 1 1 auto;
+  }
+
+  .status-bar {
+    gap: 8px;
+  }
+
+  .status-group {
+    gap: 8px;
+  }
+
+  .status-group-right span:not(.cursor-position) {
+    display: none;
+  }
+}

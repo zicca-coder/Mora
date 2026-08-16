@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Mora architecture diagram</title>
+  <desc id="desc">A simple diagram showing renderer, preload, IPC, main process, and PDF output.</desc>
+  <rect width="960" height="420" fill="#f7f7f4"/>
+  <g fill="#fffffc" stroke="#cfd3ca" stroke-width="2">
+    <rect x="56" y="78" width="188" height="86" rx="10"/>
+    <rect x="292" y="78" width="188" height="86" rx="10"/>
+    <rect x="528" y="78" width="188" height="86" rx="10"/>
+    <rect x="292" y="250" width="188" height="86" rx="10"/>
+    <rect x="528" y="250" width="188" height="86" rx="10"/>
+  </g>
+  <g fill="#1d1f1b" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="650">
+    <text x="150" y="117" text-anchor="middle">Renderer</text>
+    <text x="386" y="117" text-anchor="middle">Preload</text>
+    <text x="622" y="117" text-anchor="middle">Main</text>
+    <text x="386" y="289" text-anchor="middle">Print CSS</text>
+    <text x="622" y="289" text-anchor="middle">PDF</text>
+  </g>
+  <g fill="#5f655d" font-family="Segoe UI, system-ui, sans-serif" font-size="15">
+    <text x="150" y="143" text-anchor="middle">Markdown HTML</text>
+    <text x="386" y="143" text-anchor="middle">typed bridge</text>
+    <text x="622" y="143" text-anchor="middle">printToPDF</text>
+    <text x="386" y="315" text-anchor="middle">document layout</text>
+    <text x="622" y="315" text-anchor="middle">A4 document</text>
+  </g>
+  <g stroke="#2f6f68" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M244 121h48"/>
+    <path d="M480 121h48"/>
+    <path d="M622 164v68"/>
+    <path d="M528 293h-48"/>
+  </g>
+  <g fill="#2f6f68">
+    <path d="M292 121l-10-6v12z"/>
+    <path d="M528 121l-10-6v12z"/>
+    <path d="M622 250l-6-10h12z"/>
+    <path d="M480 293l10-6v12z"/>
+  </g>
+</svg>
