@@ -58,4 +58,16 @@ describe('useMarkdownDocument', () => {
     expect(document.documentState.content).toBe('Keep this draft')
     expect(document.documentState.dirty).toBe(true)
   })
+
+  it('reports PDF export failures and resets exporting state', async () => {
+    const moraMock = installMoraMock()
+    moraMock.exportPdf.mockRejectedValue(new Error('Disk is full'))
+    const { useMarkdownDocument } = await import('@/composables/useMarkdownDocument')
+    const document = useMarkdownDocument()
+
+    await document.exportPdfDocument()
+
+    expect(document.lastError.value).toBe('Disk is full')
+    expect(document.isExportingPdf.value).toBe(false)
+  })
 })

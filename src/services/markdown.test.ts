@@ -64,4 +64,10 @@ hello <world>
 
     expect(html).not.toContain('href="javascript:')
   })
+
+  it('does not allow data links', () => {
+    const html = renderMarkdown('[unsafe](data:text/html,<script>alert(1)</script>)')
+
+    expect(html).not.toContain('href="data:')
+  })
 })

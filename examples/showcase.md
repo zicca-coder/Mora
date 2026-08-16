@@ -10,7 +10,7 @@ Mora is a minimal, local-first Markdown editor. The preview should feel calm, re
 
 ### Inline Formatting
 
-Use **bold text** for emphasis, *italic text* for a softer note, and ~~strikethrough~~ for removed ideas. Inline commands such as `pnpm dev`, `Ctrl+S`, and `window.mora` should remain compact and readable.
+Use **bold text** for emphasis, _italic text_ for a softer note, and ~~strikethrough~~ for removed ideas. Inline commands such as `pnpm dev`, `Ctrl+S`, and `window.mora` should remain compact and readable.
 
 #### Links
 
@@ -57,16 +57,16 @@ Small headings should be visible without shouting.
 
 ## Table
 
-| Name | Description | Status |
-| --- | --- | --- |
-| Editor | CodeMirror Markdown input | Ready |
-| Preview | Sanitized markdown-it rendering | Ready |
-| PDF Export | Future V0.3 feature | Not started |
+| Name       | Description                     | Status      |
+| ---------- | ------------------------------- | ----------- |
+| Editor     | CodeMirror Markdown input       | Ready       |
+| Preview    | Sanitized markdown-it rendering | Ready       |
+| PDF Export | Future V0.3 feature             | Not started |
 
-| Long Column | Description With Wrapping | Notes |
-| --- | --- | --- |
-| Very wide table content | This cell intentionally contains a long sentence that should wrap inside the PDF page instead of forcing the document wider than A4. | Tables should stay readable when exported. |
-| Local image support | Relative image paths such as `./assets/mora-architecture.svg` are important for technical notes. | PDF export should use the Markdown file location as the base path. |
+| Long Column             | Description With Wrapping                                                                                                            | Notes                                                              |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| Very wide table content | This cell intentionally contains a long sentence that should wrap inside the PDF page instead of forcing the document wider than A4. | Tables should stay readable when exported.                         |
+| Local image support     | Relative image paths such as `./assets/mora-architecture.svg` are important for technical notes.                                     | PDF export should use the Markdown file location as the base path. |
 
 ## TypeScript
 
@@ -80,6 +80,7 @@ function titleFor(fileName: string, dirty: boolean): string {
 
 ## Long Code Line
 
+<!-- prettier-ignore -->
 ```ts
 const veryLongConfigurationValue = "mora-pdf-export-keeps-long-code-lines-inside-the-page-without-forcing-horizontal-document-overflow-or-clipping-important-technical-content";
 ```

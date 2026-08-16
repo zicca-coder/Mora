@@ -23,7 +23,7 @@
 }
 
 .markdown-preview:empty::before {
-  content: "";
+  content: '';
 }
 
 .markdown-preview > :first-child {

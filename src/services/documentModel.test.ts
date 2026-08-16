@@ -53,4 +53,18 @@ describe('documentModel', () => {
       characters: 13
     })
   })
+
+  it('treats whitespace-only content as empty stats', () => {
+    expect(calculateDocumentStats(' \n\t ')).toEqual({
+      words: 0,
+      characters: 0
+    })
+  })
+
+  it('normalizes CRLF line endings for character counts', () => {
+    expect(calculateDocumentStats('Line 1\r\nLine 2')).toEqual({
+      words: 4,
+      characters: 13
+    })
+  })
 })

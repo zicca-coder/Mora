@@ -56,11 +56,20 @@ pnpm dev
 ## 测试与验证
 
 ```bash
+pnpm lint
+pnpm format:check
 pnpm test
 pnpm typecheck
 ```
 
-当前还没有配置 lint 命令。
+需要自动修复 lint 或格式问题时，可以使用：
+
+```bash
+pnpm lint:fix
+pnpm format
+```
+
+Electron 原生对话框、窗口关闭和真实 PDF 导出等流程请参考 `docs/qa/manual-smoke-test.md` 手工验证。
 
 ## 构建
 

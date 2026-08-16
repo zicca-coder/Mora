@@ -156,7 +156,10 @@ export async function createPdfBuffer(payload: ExportPdfPayload): Promise<Buffer
   }
 }
 
-export async function exportPdf(payload: ExportPdfPayload, parentWindow: BrowserWindow | null): Promise<ExportPdfResult> {
+export async function exportPdf(
+  payload: ExportPdfPayload,
+  parentWindow: BrowserWindow | null
+): Promise<ExportPdfResult> {
   const options: SaveDialogOptions = {
     title: 'Export PDF',
     defaultPath: defaultPdfPathForPayload(payload),
@@ -167,7 +170,9 @@ export async function exportPdf(payload: ExportPdfPayload, parentWindow: Browser
       }
     ]
   }
-  const result = parentWindow ? await dialog.showSaveDialog(parentWindow, options) : await dialog.showSaveDialog(options)
+  const result = parentWindow
+    ? await dialog.showSaveDialog(parentWindow, options)
+    : await dialog.showSaveDialog(options)
 
   if (result.canceled || !result.filePath) {
     return { canceled: true }

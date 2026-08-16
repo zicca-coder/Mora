@@ -17,10 +17,5 @@
       "@/*": ["src/*"]
     }
   },
-  "include": [
-    "electron/**/*.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.vue"
-  ]
+  "include": ["electron/**/*.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"]
 }

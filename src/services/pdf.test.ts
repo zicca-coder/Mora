@@ -33,9 +33,19 @@ describe('PDF shared helpers', () => {
     ).toBe('E:\\notes\\abc.test.pdf')
   })
 
+  it('defaults exported PDFs to a file name when source path is missing', () => {
+    expect(
+      defaultPdfPathForPayload({
+        defaultFileName: 'Draft.markdown',
+        sourceFilePath: null
+      })
+    ).toBe('Draft.pdf')
+  })
+
   it('normalizes partial PDF options', () => {
     expect(
       normalizePdfOptions({
+        landscape: true,
         margins: {
           topMm: 12,
           bottomMm: 16,
@@ -45,6 +55,7 @@ describe('PDF shared helpers', () => {
       })
     ).toEqual({
       ...DEFAULT_PDF_OPTIONS,
+      landscape: true,
       margins: {
         topMm: 12,
         bottomMm: 16,

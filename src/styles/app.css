@@ -267,8 +267,8 @@
   .title-bar {
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      "identity mode"
-      "actions actions";
+      'identity mode'
+      'actions actions';
     gap: 8px 12px;
     padding: 8px 12px;
   }
@@ -300,9 +300,9 @@
   .title-bar {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
-      "identity"
-      "mode"
-      "actions";
+      'identity'
+      'mode'
+      'actions';
   }
 
   .toolbar,

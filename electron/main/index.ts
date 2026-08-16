@@ -20,7 +20,10 @@ let documentEditedState: DocumentEditedStatePayload = {
   dirty: false
 }
 
-async function confirmDiscardChanges(payload: ConfirmDiscardChangesPayload, parentWindow: BrowserWindow | null): Promise<boolean> {
+async function confirmDiscardChanges(
+  payload: ConfirmDiscardChangesPayload,
+  parentWindow: BrowserWindow | null
+): Promise<boolean> {
   const fileName = payload.fileName.trim() || 'Untitled'
   const result = parentWindow
     ? await dialog.showMessageBox(parentWindow, {
@@ -231,7 +234,7 @@ function registerIpcHandlers(): void {
       return await exportPdf(payload, mainWindow)
     } catch (error) {
       console.error('Failed to export PDF.', error)
-      throw new Error('Failed to export PDF.')
+      throw new Error('Failed to export PDF.', { cause: error })
     }
   })
 

@@ -32,12 +32,18 @@ const viewModes: Array<{ label: string; value: ViewMode; title: string }> = [
 
     <div class="toolbar" aria-label="Document actions">
       <button type="button" class="tool-button" title="New document (Ctrl/Cmd+N)" @click="emit('new')">New</button>
-      <button type="button" class="tool-button" title="Open Markdown file (Ctrl/Cmd+O)" @click="emit('open')">Open</button>
-      <button type="button" class="tool-button primary-action" title="Save (Ctrl/Cmd+S)" @click="emit('save')">Save</button>
+      <button type="button" class="tool-button" title="Open Markdown file (Ctrl/Cmd+O)" @click="emit('open')">
+        Open
+      </button>
+      <button type="button" class="tool-button primary-action" title="Save (Ctrl/Cmd+S)" @click="emit('save')">
+        Save
+      </button>
       <details class="more-menu">
         <summary class="tool-button more-menu-trigger" title="More document actions">More</summary>
         <div class="more-menu-content">
-          <button type="button" class="menu-item" title="Save As (Ctrl/Cmd+Shift+S)" @click="emit('saveAs')">Save As</button>
+          <button type="button" class="menu-item" title="Save As (Ctrl/Cmd+Shift+S)" @click="emit('saveAs')">
+            Save As
+          </button>
           <button
             type="button"
             class="menu-item"

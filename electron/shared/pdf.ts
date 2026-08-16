@@ -73,7 +73,9 @@ export function ensurePdfExtension(filePath: string): string {
   return extensionFromPathLike(filePath) === '.pdf' ? filePath : `${filePath}.pdf`
 }
 
-export function defaultPdfPathForPayload(payload: Pick<ExportPdfPayload, 'defaultFileName' | 'sourceFilePath'>): string {
+export function defaultPdfPathForPayload(
+  payload: Pick<ExportPdfPayload, 'defaultFileName' | 'sourceFilePath'>
+): string {
   const fileName = pdfFileNameFromMarkdownName(payload.defaultFileName)
 
   if (!payload.sourceFilePath) {

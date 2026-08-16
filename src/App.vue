@@ -74,12 +74,12 @@ onBeforeUnmount(() => {
     <TitleBar
       :title="title"
       :view-mode="viewMode"
+      :exporting-pdf="isExportingPdf"
       @new="newDocument"
       @open="openDocument"
       @save="saveDocument"
       @save-as="saveDocumentAs"
       @export-pdf="exportPdfDocument"
-      :exporting-pdf="isExportingPdf"
       @change-view-mode="viewMode = $event"
     />
 
