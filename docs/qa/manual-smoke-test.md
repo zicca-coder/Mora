@@ -132,3 +132,30 @@ examples/showcase.md
 - [ ] Word count updates while editing.
 - [ ] Character count updates while editing.
 - [ ] Cursor position updates while moving through the editor.
+
+## 13. Installed Windows Build
+
+- [ ] Run `pnpm build:win`.
+- [ ] Confirm `release/Mora-<version>-Setup.exe` exists.
+- [ ] Install Mora from the setup executable.
+- [ ] Launch Mora from the Start Menu.
+- [ ] Confirm the app starts without `pnpm dev`.
+- [ ] Confirm the main window is not blank.
+- [ ] Confirm New, Open, Save, Save As, Unsaved Changes, Preview, and PDF Export work in the installed app.
+- [ ] Confirm the installed app can be uninstalled from Windows.
+
+## 14. Portable Windows Build
+
+- [ ] Confirm `release/Mora-<version>-Portable.exe` exists.
+- [ ] Launch the portable executable directly.
+- [ ] Confirm the app starts without installation and without `pnpm dev`.
+- [ ] Confirm Open, editing, Save, Preview, and PDF Export work in the portable app.
+
+## 15. Packaged PDF Export
+
+- [ ] In the installed app, export a PDF from `examples/showcase.md`.
+- [ ] In the portable app, export a PDF from `examples/showcase.md`.
+- [ ] Confirm the PDF is not blank.
+- [ ] Confirm print CSS is applied.
+- [ ] Confirm Mora toolbar, editor, and status bar are not included in the PDF.
+- [ ] Confirm Chinese text, code blocks, tables, and local images render acceptably.

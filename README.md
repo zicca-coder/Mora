@@ -79,6 +79,26 @@ pnpm build
 
 `pnpm build` 会先执行 TypeScript 类型检查，然后构建 Electron Main、Preload 和 Renderer。
 
+## Windows 打包
+
+```bash
+pnpm build:win
+```
+
+该命令会先执行 production build，然后在 `release/` 中生成 Windows 安装版和便携版：
+
+```text
+Mora-<version>-Setup.exe
+Mora-<version>-Portable.exe
+```
+
+也可以只构建其中一种产物：
+
+```bash
+pnpm build:win:installer
+pnpm build:win:portable
+```
+
 ## 项目结构
 
 ```text

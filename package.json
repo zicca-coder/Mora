@@ -16,6 +16,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "pnpm typecheck && electron-vite build",
+    "build:win": "pnpm build && electron-builder --win --x64",
+    "build:win:installer": "pnpm build && electron-builder --win nsis --x64",
+    "build:win:portable": "pnpm build && electron-builder --win portable --x64",
     "preview": "electron-vite preview"
   },
   "dependencies": {
@@ -36,6 +39,7 @@
     "@types/node": "^22.10.7",
     "@vitejs/plugin-vue": "^5.2.4",
     "electron": "^33.4.11",
+    "electron-builder": "^26.15.3",
     "electron-vite": "^2.3.0",
     "esbuild": "^0.21.5",
     "eslint": "^10.8.1",
@@ -52,6 +56,9 @@
     "vue-tsc": "^2.2.0"
   },
   "pnpm": {
+    "ignoredBuiltDependencies": [
+      "electron-winstaller"
+    ],
     "onlyBuiltDependencies": [
       "electron",
       "esbuild"

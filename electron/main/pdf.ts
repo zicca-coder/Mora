@@ -7,6 +7,7 @@ import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import type { ExportPdfPayload, ExportPdfResult, PdfExportOptions } from '../shared/ipc'
 import { defaultPdfPathForPayload, ensurePdfExtension, normalizePdfOptions, sanitizeDocumentTitle } from '../shared/pdf'
+import { appAssetPath } from './paths'
 
 const PRINT_WINDOW_OPTIONS: BrowserWindowConstructorOptions = {
   show: false,
@@ -42,9 +43,8 @@ function stripCssImports(css: string): string {
 }
 
 async function readPrintStyles(): Promise<string> {
-  const projectRoot = process.cwd()
-  const styleDir = join(projectRoot, 'src/styles')
-  const highlightPath = join(projectRoot, 'node_modules/highlight.js/styles/github.css')
+  const styleDir = appAssetPath('src', 'styles')
+  const highlightPath = appAssetPath('node_modules', 'highlight.js', 'styles', 'github.css')
 
   const [tokensCss, highlightCss, markdownCss, printCss] = await Promise.all([
     readTextIfExists(join(styleDir, 'tokens.css')),

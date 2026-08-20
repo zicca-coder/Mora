@@ -13,6 +13,7 @@ import type {
   SaveFileResult
 } from '../shared/ipc'
 import { exportPdf } from './pdf'
+import { appIconPath } from './paths'
 
 let mainWindow: BrowserWindow | null = null
 let documentEditedState: DocumentEditedStatePayload = {
@@ -55,6 +56,7 @@ function createWindow(): void {
     minWidth: 860,
     minHeight: 560,
     title: 'Untitled - Mora',
+    icon: appIconPath(),
     backgroundColor: '#fbfaf8',
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
