@@ -9,7 +9,6 @@ import { onBeforeUnmount, onMounted } from 'vue'
 
 const {
   documentState,
-  title,
   documentStats,
   viewMode,
   cursorPosition,
@@ -72,18 +71,11 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="app-shell">
-    <AppSidebar
-      :file-name="documentState.fileName"
-      :file-path="documentState.filePath"
-      :dirty="documentState.dirty"
-      @new="newDocument"
-    />
+    <AppSidebar :file-name="documentState.fileName" :dirty="documentState.dirty" @new="newDocument" />
 
-    <section class="workbench" aria-label="Mora workspace">
+    <section class="app-main" aria-label="Mora workspace">
       <TitleBar
-        :title="title"
-        :file-path="documentState.filePath"
-        :dirty="documentState.dirty"
+        :title="documentState.fileName"
         :view-mode="viewMode"
         :exporting-pdf="isExportingPdf"
         @new="newDocument"
@@ -108,9 +100,9 @@ onBeforeUnmount(() => {
           <MarkdownPreview :content="documentState.content" />
         </section>
       </main>
-    </section>
 
-    <StatusBar :dirty="documentState.dirty" :cursor="cursorPosition" :stats="documentStats" />
+      <StatusBar :dirty="documentState.dirty" :cursor="cursorPosition" :stats="documentStats" />
+    </section>
 
     <p v-if="lastError" class="error-message">{{ lastError }}</p>
   </div>

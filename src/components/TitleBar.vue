@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Columns2, Eye, FileDown, FilePlus2, FileText, FolderOpen, MoreHorizontal, Save, SquarePen } from '@lucide/vue'
 import type { Component } from 'vue'
 import type { ViewMode } from '@/types/document'
 
-const props = defineProps<{
+defineProps<{
   title: string
-  filePath: string | null
-  dirty: boolean
   viewMode: ViewMode
   exportingPdf: boolean
 }>()
@@ -26,26 +23,15 @@ const viewModes: Array<{ label: string; value: ViewMode; title: string; icon: Co
   { label: 'Split', value: 'split', title: 'Editor and preview', icon: Columns2 },
   { label: 'Preview', value: 'preview', title: 'Preview only', icon: Eye }
 ]
-
-const locationLabel = computed(() => {
-  if (!props.filePath) {
-    return 'Local draft'
-  }
-
-  const separatorIndex = Math.max(props.filePath.lastIndexOf('/'), props.filePath.lastIndexOf('\\'))
-  return separatorIndex === -1 ? 'Local document' : props.filePath.slice(0, separatorIndex)
-})
 </script>
 
 <template>
   <header class="workspace-header">
     <div class="document-heading" aria-label="Current document">
       <div class="document-title-row">
-        <FileText :size="15" :stroke-width="1.75" aria-hidden="true" />
+        <FileText :size="16" :stroke-width="1.75" aria-hidden="true" />
         <h1 class="document-title">{{ title }}</h1>
-        <span v-if="dirty" class="dirty-dot" aria-label="Unsaved changes" />
       </div>
-      <p class="document-location">{{ locationLabel }}</p>
     </div>
 
     <div class="header-actions" aria-label="Document toolbar">
@@ -73,7 +59,7 @@ const locationLabel = computed(() => {
           <FolderOpen :size="16" :stroke-width="1.75" aria-hidden="true" />
           <span class="sr-only">Open File</span>
         </button>
-        <button type="button" class="icon-button primary-action" title="Save" @click="emit('save')">
+        <button type="button" class="icon-button" title="Save" @click="emit('save')">
           <Save :size="16" :stroke-width="1.8" aria-hidden="true" />
           <span class="sr-only">Save</span>
         </button>

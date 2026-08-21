@@ -2,11 +2,19 @@ import type { DocumentStats, MarkdownDocument } from '@/types/document'
 
 export const initialContent = `# Welcome to Mora
 
-Mora is a minimal, beautiful and local-first Markdown editor.
+A quiet place to write, think, and keep your words close.
 
-- Write Markdown on the left
-- Preview it on the right
-- Open and save local .md files
+## Start writing
+
+Mora keeps Markdown simple and local.
+
+- Write without distractions
+- Preview as you type
+- Keep your files on your machine
+
+> Your notes belong to you.
+
+\`Markdown\`, beautifully simple.
 `
 
 export function createInitialDocument(): MarkdownDocument {
