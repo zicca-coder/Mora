@@ -8,4 +8,9 @@ output/
 review/
 .idea/
 
+# Local agent context and response artifacts
+AGENTS.md
+HandOff.md
+res.txt
+
 pnpm-lock.yaml

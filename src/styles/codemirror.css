@@ -3,14 +3,14 @@
   height: 100%;
   min-height: 0;
   overflow: hidden;
-  background: var(--mora-editor-bg);
+  background: var(--bg-editor);
 }
 
 .markdown-editor .cm-editor {
   height: 100%;
-  color: var(--mora-text-primary);
-  background: var(--mora-editor-bg);
-  font-size: var(--mora-text-editor);
+  color: var(--text-primary);
+  background: var(--bg-editor);
+  font-size: var(--text-editor);
 }
 
 .markdown-editor .cm-editor.cm-focused {
@@ -18,22 +18,22 @@
 }
 
 .markdown-editor .cm-scroller {
-  font-family: var(--mora-font-editor);
-  line-height: var(--mora-line-editor);
+  font-family: var(--font-editor);
+  line-height: var(--line-editor);
 }
 
 .markdown-editor .cm-content {
   width: 100%;
-  max-width: var(--mora-content-width);
+  max-width: var(--content-width);
   min-height: 100%;
   margin: 0 auto;
-  padding: 48px 44px 72px;
-  caret-color: var(--mora-accent-strong);
+  padding: 64px 44px 88px;
+  caret-color: var(--accent-strong);
 }
 
 .workspace.mode-split .markdown-editor .cm-content {
-  max-width: 760px;
-  padding: 34px 34px 58px;
+  max-width: 704px;
+  padding: 52px 38px 76px;
 }
 
 .markdown-editor .cm-line {
@@ -41,7 +41,7 @@
 }
 
 .markdown-editor .cm-placeholder {
-  color: var(--mora-text-tertiary);
+  color: var(--text-faint);
   font-style: normal;
 }
 
@@ -50,38 +50,46 @@
 }
 
 .markdown-editor .cm-activeLine {
-  background: color-mix(in srgb, var(--mora-accent-soft) 34%, transparent);
+  background: rgba(93, 119, 148, 0.055);
 }
 
 .markdown-editor .cm-selectionBackground,
 .markdown-editor .cm-focused .cm-selectionBackground {
-  background: var(--mora-selection);
+  background: var(--selection);
 }
 
 .markdown-editor .cm-cursor {
-  border-left-color: var(--mora-accent-strong);
+  border-left-color: var(--accent-strong);
   border-left-width: 1.5px;
 }
 
 .markdown-editor .cm-matchingBracket,
 .markdown-editor .cm-nonmatchingBracket {
-  outline: 1px solid color-mix(in srgb, var(--mora-accent) 42%, transparent);
-  background: var(--mora-accent-soft);
+  outline: 1px solid rgba(93, 119, 148, 0.26);
+  background: var(--accent-soft);
 }
 
 .markdown-editor .cm-tooltip {
-  border: 1px solid var(--mora-border);
-  border-radius: var(--mora-radius-md);
-  background: var(--mora-surface-elevated);
-  box-shadow: var(--mora-shadow-floating);
-  font-family: var(--mora-font-ui);
-  font-size: var(--mora-text-ui);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-popover);
+  box-shadow: var(--shadow-floating);
+  font-family: var(--font-ui);
+  font-size: var(--text-ui);
+}
+
+.markdown-editor .cm-line span {
+  text-underline-offset: 0.18em;
+}
+
+.markdown-editor .cm-line span[style*='monospace'] {
+  font-family: var(--font-mono);
 }
 
 @media (max-width: 1180px) {
   .markdown-editor .cm-content,
   .workspace.mode-split .markdown-editor .cm-content {
-    max-width: var(--mora-content-width);
-    padding: 30px 28px 54px;
+    max-width: var(--content-width);
+    padding: 44px 32px 68px;
   }
 }

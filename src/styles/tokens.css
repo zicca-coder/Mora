@@ -1,43 +1,97 @@
 :root {
-  --mora-bg: #f7f6f3;
-  --mora-surface: #fcfbf8;
-  --mora-surface-elevated: #fffefa;
-  --mora-surface-muted: #f0efeb;
-  --mora-sidebar-bg: #f3f2ee;
-  --mora-editor-bg: #fcfbf8;
-  --mora-preview-bg: #fffefa;
-  --mora-text-primary: #20211d;
-  --mora-text-strong: #11120f;
-  --mora-text-secondary: #666b62;
-  --mora-text-tertiary: #8d9288;
-  --mora-border: #dcdad3;
-  --mora-border-soft: #ebe9e2;
-  --mora-accent: #4977a3;
-  --mora-accent-strong: #315f89;
-  --mora-accent-soft: #e8f0f7;
-  --mora-success: #54745d;
-  --mora-danger: #96362e;
-  --mora-danger-bg: #fff2ef;
-  --mora-selection: rgba(73, 119, 163, 0.2);
-  --mora-focus: rgba(73, 119, 163, 0.34);
-  --mora-shadow-popover: 0 16px 38px rgba(40, 38, 31, 0.13);
-  --mora-shadow-floating: 0 12px 28px rgba(40, 38, 31, 0.1);
+  --bg-app: #f5f5f2;
+  --bg-sidebar: #f1f1ee;
+  --bg-workspace: #fbfbfa;
+  --bg-editor: #fbfbfa;
+  --bg-preview: #fdfdfc;
+  --bg-hover: rgba(32, 32, 28, 0.052);
+  --bg-active: rgba(32, 32, 28, 0.075);
+  --bg-control: rgba(255, 255, 255, 0.62);
+  --bg-popover: rgba(255, 255, 253, 0.98);
 
-  --mora-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --mora-font-content: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --mora-font-serif: Georgia, Cambria, 'Times New Roman', serif;
-  --mora-font-editor: 'Cascadia Code', 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
-  --mora-font-mono: 'Cascadia Code', 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --text-primary: #242421;
+  --text-strong: #171714;
+  --text-secondary: #666862;
+  --text-muted: #8b8d86;
+  --text-faint: #adafa8;
 
-  --mora-text-xs: 11px;
-  --mora-text-sm: 12px;
-  --mora-text-ui: 13px;
-  --mora-text-body: 17px;
-  --mora-text-editor: 15px;
+  --border-subtle: rgba(36, 36, 32, 0.075);
+  --border-strong: rgba(36, 36, 32, 0.13);
 
-  --mora-line-content: 1.82;
-  --mora-line-editor: 1.7;
+  --accent: #5d7794;
+  --accent-strong: #3f668a;
+  --accent-soft: rgba(93, 119, 148, 0.11);
+  --danger: #9a4a42;
+  --danger-bg: #fff3f0;
+  --success: #65745d;
+  --selection: rgba(93, 119, 148, 0.19);
+  --focus-ring: rgba(93, 119, 148, 0.36);
 
+  --shadow-popover: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.05);
+  --shadow-floating: 0 10px 34px rgba(42, 40, 34, 0.1), 0 1px 5px rgba(42, 40, 34, 0.06);
+
+  --font-ui: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+  --font-content: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --font-editor: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+  --font-serif: Georgia, Cambria, 'Times New Roman', serif;
+  --font-mono: 'SFMono-Regular', 'Cascadia Code', 'JetBrains Mono', Consolas, 'Liberation Mono', monospace;
+
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-ui: 13px;
+  --text-body: 17px;
+  --text-editor: 16px;
+
+  --line-content: 1.78;
+  --line-editor: 1.76;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+
+  --sidebar-width: 228px;
+  --header-height: 52px;
+  --status-height: 26px;
+  --content-width: 736px;
+  --transition-fast: 120ms ease;
+
+  --mora-bg: var(--bg-app);
+  --mora-surface: var(--bg-workspace);
+  --mora-surface-elevated: var(--bg-popover);
+  --mora-surface-muted: var(--bg-hover);
+  --mora-sidebar-bg: var(--bg-sidebar);
+  --mora-editor-bg: var(--bg-editor);
+  --mora-preview-bg: var(--bg-preview);
+  --mora-text-primary: var(--text-primary);
+  --mora-text-strong: var(--text-strong);
+  --mora-text-secondary: var(--text-secondary);
+  --mora-text-tertiary: var(--text-muted);
+  --mora-border: var(--border-strong);
+  --mora-border-soft: var(--border-subtle);
+  --mora-accent: var(--accent);
+  --mora-accent-strong: var(--accent-strong);
+  --mora-accent-soft: var(--accent-soft);
+  --mora-success: var(--success);
+  --mora-danger: var(--danger);
+  --mora-danger-bg: var(--danger-bg);
+  --mora-selection: var(--selection);
+  --mora-focus: var(--focus-ring);
+  --mora-shadow-popover: var(--shadow-popover);
+  --mora-shadow-floating: var(--shadow-floating);
+  --mora-font-ui: var(--font-ui);
+  --mora-font-content: var(--font-content);
+  --mora-font-serif: var(--font-serif);
+  --mora-font-editor: var(--font-editor);
+  --mora-font-mono: var(--font-mono);
+  --mora-text-xs: var(--text-xs);
+  --mora-text-sm: var(--text-sm);
+  --mora-text-ui: var(--text-ui);
+  --mora-text-body: var(--text-body);
+  --mora-text-editor: var(--text-editor);
+  --mora-line-content: var(--line-content);
+  --mora-line-editor: var(--line-editor);
   --mora-space-1: 4px;
   --mora-space-2: 8px;
   --mora-space-3: 12px;
@@ -45,58 +99,35 @@
   --mora-space-5: 24px;
   --mora-space-6: 32px;
   --mora-space-7: 48px;
+  --mora-radius-xs: var(--radius-xs);
+  --mora-radius-sm: var(--radius-sm);
+  --mora-radius-md: var(--radius-md);
+  --mora-radius-lg: var(--radius-lg);
+  --mora-sidebar-width: var(--sidebar-width);
+  --mora-titlebar-height: var(--header-height);
+  --mora-status-height: var(--status-height);
+  --mora-content-width: var(--content-width);
+  --mora-transition-fast: var(--transition-fast);
 
-  --mora-radius-xs: 4px;
-  --mora-radius-sm: 6px;
-  --mora-radius-md: 8px;
-  --mora-radius-lg: 10px;
+  --color-bg: var(--bg-app);
+  --color-surface: var(--bg-workspace);
+  --color-surface-muted: var(--bg-hover);
+  --color-editor: var(--bg-editor);
+  --color-text: var(--text-primary);
+  --color-text-strong: var(--text-strong);
+  --color-text-muted: var(--text-secondary);
+  --color-text-subtle: var(--text-muted);
+  --color-border: var(--border-strong);
+  --color-border-soft: var(--border-subtle);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-selection: var(--selection);
+  --color-focus: var(--focus-ring);
 
-  --mora-sidebar-width: 236px;
-  --mora-titlebar-height: 54px;
-  --mora-status-height: 28px;
-  --mora-content-width: 800px;
-  --mora-transition-fast: 140ms ease;
-
-  --color-bg: var(--mora-bg);
-  --color-surface: var(--mora-surface);
-  --color-surface-muted: var(--mora-surface-muted);
-  --color-editor: var(--mora-editor-bg);
-  --color-text: var(--mora-text-primary);
-  --color-text-strong: var(--mora-text-strong);
-  --color-text-muted: var(--mora-text-secondary);
-  --color-text-subtle: var(--mora-text-tertiary);
-  --color-border: var(--mora-border);
-  --color-border-soft: var(--mora-border-soft);
-  --color-accent: var(--mora-accent);
-  --color-accent-strong: var(--mora-accent-strong);
-  --color-accent-soft: var(--mora-accent-soft);
-  --color-danger: var(--mora-danger);
-  --color-danger-bg: var(--mora-danger-bg);
-  --color-selection: var(--mora-selection);
-  --color-focus: var(--mora-focus);
-
-  --font-ui: var(--mora-font-ui);
-  --font-content: var(--mora-font-content);
-  --font-editor: var(--mora-font-editor);
-  --font-mono: var(--mora-font-mono);
-
-  --text-xs: var(--mora-text-xs);
-  --text-sm: var(--mora-text-sm);
-  --text-ui: var(--mora-text-ui);
-  --text-body: var(--mora-text-body);
-  --text-editor: var(--mora-text-editor);
-
-  --line-content: var(--mora-line-content);
-  --line-editor: var(--mora-line-editor);
-
-  --radius-xs: var(--mora-radius-xs);
-  --radius-sm: var(--mora-radius-sm);
-  --radius-md: var(--mora-radius-md);
-
-  --toolbar-height: var(--mora-titlebar-height);
-  --status-height: var(--mora-status-height);
-  --content-width: var(--mora-content-width);
-  --transition-fast: var(--mora-transition-fast);
+  --toolbar-height: var(--header-height);
 }
 
 * {
@@ -113,8 +144,8 @@ body,
 
 body {
   overflow: hidden;
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--text-primary);
+  background: var(--bg-app);
   font-family: var(--font-ui);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -125,5 +156,5 @@ button {
 }
 
 ::selection {
-  background: var(--color-selection);
+  background: var(--selection);
 }

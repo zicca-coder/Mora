@@ -1,7 +1,7 @@
-import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron'
 import type { OpenDialogOptions, SaveDialogOptions } from 'electron'
 import { readFile, writeFile } from 'node:fs/promises'
-import { basename, dirname, extname, join } from 'node:path'
+import { basename, dirname, extname, isAbsolute, join } from 'node:path'
 import type {
   ConfirmDiscardChangesPayload,
   DocumentEditedStatePayload,
@@ -149,6 +149,11 @@ function ensureMarkdownExtension(filePath: string): string {
   return join(dirname(filePath), `${basename(filePath, extension)}.md`)
 }
 
+function defaultSaveDialogPath(filePath: string | null | undefined, fallbackFileName: string): string {
+  const candidate = filePath?.trim() || fallbackFileName
+  return isAbsolute(candidate) ? candidate : join(app.getPath('documents'), candidate)
+}
+
 function canOpenExternally(url: string): boolean {
   return /^(https?|mailto):/i.test(url)
 }
@@ -208,7 +213,7 @@ function registerIpcHandlers(): void {
   ipcMain.handle('mora:save-file-as', async (_event, payload: SaveFileAsPayload): Promise<SaveFileResult> => {
     const options: SaveDialogOptions = {
       title: 'Save Markdown File',
-      defaultPath: payload.currentPath ?? 'Untitled.md',
+      defaultPath: defaultSaveDialogPath(payload.currentPath, 'Untitled.md'),
       filters: [
         {
           name: 'Markdown',
@@ -259,6 +264,7 @@ function registerIpcHandlers(): void {
 }
 
 app.whenReady().then(() => {
+  Menu.setApplicationMenu(null)
   registerIpcHandlers()
   createWindow()
 

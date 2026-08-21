@@ -76,17 +76,13 @@ onBeforeUnmount(() => {
       :file-name="documentState.fileName"
       :file-path="documentState.filePath"
       :dirty="documentState.dirty"
-      :stats="documentStats"
-      :exporting-pdf="isExportingPdf"
       @new="newDocument"
-      @open="openDocument"
-      @save="saveDocument"
-      @export-pdf="exportPdfDocument"
     />
 
     <section class="workbench" aria-label="Mora workspace">
       <TitleBar
         :title="title"
+        :file-path="documentState.filePath"
         :dirty="documentState.dirty"
         :view-mode="viewMode"
         :exporting-pdf="isExportingPdf"

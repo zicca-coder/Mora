@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { Columns2, Eye, FileDown, FilePlus2, FileText, MoreHorizontal, Save, SquarePen } from '@lucide/vue'
+import { computed } from 'vue'
+import { Columns2, Eye, FileDown, FilePlus2, FileText, FolderOpen, MoreHorizontal, Save, SquarePen } from '@lucide/vue'
 import type { Component } from 'vue'
 import type { ViewMode } from '@/types/document'
 
-defineProps<{
+const props = defineProps<{
   title: string
+  filePath: string | null
   dirty: boolean
   viewMode: ViewMode
   exportingPdf: boolean
@@ -24,24 +26,29 @@ const viewModes: Array<{ label: string; value: ViewMode; title: string; icon: Co
   { label: 'Split', value: 'split', title: 'Editor and preview', icon: Columns2 },
   { label: 'Preview', value: 'preview', title: 'Preview only', icon: Eye }
 ]
+
+const locationLabel = computed(() => {
+  if (!props.filePath) {
+    return 'Local draft'
+  }
+
+  const separatorIndex = Math.max(props.filePath.lastIndexOf('/'), props.filePath.lastIndexOf('\\'))
+  return separatorIndex === -1 ? 'Local document' : props.filePath.slice(0, separatorIndex)
+})
 </script>
 
 <template>
-  <header class="title-bar">
-    <div class="tab-strip" aria-label="Open documents">
-      <div class="editor-tab active" :class="{ dirty }">
+  <header class="workspace-header">
+    <div class="document-heading" aria-label="Current document">
+      <div class="document-title-row">
         <FileText :size="15" :stroke-width="1.75" aria-hidden="true" />
-        <span class="editor-tab-title">{{ title }}</span>
-        <span v-if="dirty" class="tab-dirty-dot" aria-label="Unsaved changes" />
+        <h1 class="document-title">{{ title }}</h1>
+        <span v-if="dirty" class="dirty-dot" aria-label="Unsaved changes" />
       </div>
-
-      <button type="button" class="tab-add-button" title="New document" @click="emit('new')">
-        <FilePlus2 :size="15" :stroke-width="1.75" aria-hidden="true" />
-        <span class="sr-only">New document</span>
-      </button>
+      <p class="document-location">{{ locationLabel }}</p>
     </div>
 
-    <div class="top-actions" aria-label="Document toolbar">
+    <div class="header-actions" aria-label="Document toolbar">
       <div class="segmented-control" aria-label="View mode">
         <button
           v-for="mode in viewModes"
@@ -58,8 +65,16 @@ const viewModes: Array<{ label: string; value: ViewMode; title: string; icon: Co
       </div>
 
       <div class="toolbar" aria-label="File actions">
+        <button type="button" class="icon-button" title="New document" @click="emit('new')">
+          <FilePlus2 :size="16" :stroke-width="1.75" aria-hidden="true" />
+          <span class="sr-only">New document</span>
+        </button>
+        <button type="button" class="icon-button" title="Open File" @click="emit('open')">
+          <FolderOpen :size="16" :stroke-width="1.75" aria-hidden="true" />
+          <span class="sr-only">Open File</span>
+        </button>
         <button type="button" class="icon-button primary-action" title="Save" @click="emit('save')">
-          <Save :size="15" :stroke-width="1.8" aria-hidden="true" />
+          <Save :size="16" :stroke-width="1.8" aria-hidden="true" />
           <span class="sr-only">Save</span>
         </button>
         <button
@@ -69,7 +84,7 @@ const viewModes: Array<{ label: string; value: ViewMode; title: string; icon: Co
           :disabled="exportingPdf"
           @click="emit('exportPdf')"
         >
-          <FileDown :size="15" :stroke-width="1.8" aria-hidden="true" />
+          <FileDown :size="16" :stroke-width="1.8" aria-hidden="true" />
           <span class="sr-only">Export PDF</span>
         </button>
         <details class="more-menu">

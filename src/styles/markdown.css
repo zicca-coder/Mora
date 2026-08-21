@@ -2,20 +2,20 @@
 
 .markdown-preview {
   width: 100%;
-  max-width: var(--mora-content-width);
+  max-width: var(--content-width);
   min-height: 100%;
   margin: 0 auto;
-  padding: 48px 44px 72px;
+  padding: 64px 44px 88px;
   overflow-wrap: break-word;
-  color: var(--mora-text-primary);
-  font-family: var(--mora-font-content);
-  font-size: var(--mora-text-body);
-  line-height: var(--mora-line-content);
+  color: var(--text-primary);
+  font-family: var(--font-content);
+  font-size: var(--text-body);
+  line-height: var(--line-content);
 }
 
 .workspace.mode-split .markdown-preview {
-  max-width: 760px;
-  padding: 34px 34px 58px;
+  max-width: 704px;
+  padding: 52px 38px 76px;
 }
 
 .workspace.mode-editor .markdown-preview {
@@ -40,69 +40,45 @@
 .markdown-preview h4,
 .markdown-preview h5,
 .markdown-preview h6 {
-  color: var(--mora-text-strong);
+  color: var(--text-strong);
   letter-spacing: 0;
 }
 
 .markdown-preview h1 {
-  margin: 0 0 0.78em;
-  font-family: var(--mora-font-serif);
-  font-size: clamp(2.15rem, 3.2vw, 3rem);
+  margin: 0 0 0.86em;
+  font-family: var(--font-serif);
+  font-size: 2.85rem;
   font-weight: 500;
   line-height: 1.08;
 }
 
 .markdown-preview h2 {
-  display: flex;
-  align-items: baseline;
-  gap: 0.42em;
-  margin: 2.05em 0 0.62em;
-  font-size: 1.38rem;
-  font-weight: 650;
+  margin: 2.1em 0 0.7em;
+  font-size: 1.34rem;
+  font-weight: 660;
   line-height: 1.28;
 }
 
-.markdown-preview h2::before {
-  flex: 0 0 auto;
-  color: color-mix(in srgb, var(--mora-accent) 78%, var(--mora-text-tertiary));
-  content: '##';
-  font-family: var(--mora-font-mono);
-  font-size: 0.72em;
-  font-weight: 520;
-}
-
 .markdown-preview h3 {
-  display: flex;
-  align-items: baseline;
-  gap: 0.44em;
-  margin: 1.75em 0 0.54em;
+  margin: 1.8em 0 0.58em;
   font-size: 1.08rem;
-  font-weight: 680;
+  font-weight: 660;
   line-height: 1.34;
-}
-
-.markdown-preview h3::before {
-  flex: 0 0 auto;
-  color: color-mix(in srgb, var(--mora-accent) 58%, var(--mora-text-tertiary));
-  content: '#';
-  font-family: var(--mora-font-mono);
-  font-size: 0.68em;
-  font-weight: 520;
 }
 
 .markdown-preview h4 {
   margin: 1.55em 0 0.5em;
   font-size: 0.98rem;
-  font-weight: 680;
+  font-weight: 660;
   line-height: 1.35;
 }
 
 .markdown-preview h5,
 .markdown-preview h6 {
   margin: 1.35em 0 0.42em;
-  color: var(--mora-text-secondary);
+  color: var(--text-secondary);
   font-size: 0.9rem;
-  font-weight: 680;
+  font-weight: 660;
   line-height: 1.38;
 }
 
@@ -111,64 +87,63 @@
 }
 
 .markdown-preview p {
-  margin: 0.86em 0;
+  margin: 0.9em 0;
 }
 
 .markdown-preview strong {
-  color: var(--mora-text-strong);
+  color: var(--text-strong);
   font-weight: 680;
 }
 
 .markdown-preview em {
-  color: color-mix(in srgb, var(--mora-text-primary) 86%, var(--mora-accent));
+  color: color-mix(in srgb, var(--text-primary) 88%, var(--accent));
 }
 
 .markdown-preview a {
-  color: var(--mora-accent-strong);
+  color: var(--accent-strong);
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--mora-accent) 34%, transparent);
+  text-decoration-color: rgba(63, 102, 138, 0.28);
   text-underline-offset: 0.2em;
   transition:
-    color var(--mora-transition-fast),
-    text-decoration-color var(--mora-transition-fast);
+    color var(--transition-fast),
+    text-decoration-color var(--transition-fast);
 }
 
 .markdown-preview a:hover {
-  color: var(--mora-accent);
+  color: var(--accent);
   text-decoration-color: currentColor;
 }
 
 .markdown-preview code {
-  border: 1px solid color-mix(in srgb, var(--mora-border-soft) 82%, transparent);
-  border-radius: var(--mora-radius-xs);
-  padding: 0.1em 0.34em;
-  color: var(--mora-text-strong);
-  background: color-mix(in srgb, var(--mora-surface-muted) 78%, var(--mora-surface-elevated));
-  font-family: var(--mora-font-mono);
-  font-size: 0.88em;
+  border-radius: var(--radius-xs);
+  padding: 0.1em 0.32em;
+  color: #9a544f;
+  background: rgba(36, 36, 32, 0.052);
+  font-family: var(--font-mono);
+  font-size: 0.86em;
 }
 
 .markdown-preview pre {
   position: relative;
   overflow: auto;
-  margin: 1.25em 0 1.45em;
-  border: 1px solid var(--mora-border-soft);
-  border-radius: var(--mora-radius-lg);
-  padding: 38px 18px 18px;
-  background: #f5f6f2;
+  margin: 1.35em 0 1.55em;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px 18px 18px;
+  background: #f4f4f1;
   line-height: 1.62;
 }
 
 .markdown-preview pre[data-language]::before {
   position: absolute;
-  top: 10px;
-  right: 12px;
-  max-width: calc(100% - 24px);
+  top: 11px;
+  right: 13px;
+  max-width: calc(100% - 26px);
   overflow: hidden;
-  color: var(--mora-text-tertiary);
+  color: var(--text-muted);
   content: attr(data-language);
-  font-family: var(--mora-font-ui);
-  font-size: var(--mora-text-xs);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
   font-weight: 620;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -182,15 +157,14 @@
   padding: 0;
   color: inherit;
   background: transparent;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
 }
 
 .markdown-preview blockquote {
   margin: 1.35em 0;
-  border-left: 2px solid color-mix(in srgb, var(--mora-accent) 64%, var(--mora-border));
-  padding: 0.12em 0 0.12em 1.15em;
-  color: var(--mora-text-secondary);
-  font-style: italic;
+  border-left: 2px solid rgba(93, 119, 148, 0.38);
+  padding: 0.1em 0 0.1em 1em;
+  color: var(--text-secondary);
 }
 
 .markdown-preview blockquote > :first-child {
@@ -203,100 +177,98 @@
 
 .markdown-preview ul,
 .markdown-preview ol {
-  margin: 0.82em 0;
-  padding-left: 1.55em;
+  margin: 0.84em 0;
+  padding-left: 1.45em;
 }
 
 .markdown-preview li {
   margin: 0.24em 0;
-  padding-left: 0.16em;
+  padding-left: 0.12em;
 }
 
 .markdown-preview li::marker {
-  color: color-mix(in srgb, var(--mora-accent) 64%, var(--mora-text-tertiary));
+  color: rgba(93, 119, 148, 0.66);
 }
 
 .markdown-preview li > ul,
 .markdown-preview li > ol {
-  margin: 0.3em 0 0.42em;
+  margin: 0.32em 0 0.44em;
 }
 
 .markdown-preview ul.contains-task-list {
-  padding-left: 1.25em;
+  padding-left: 1.2em;
   list-style: none;
 }
 
 .markdown-preview .task-list-item {
-  position: relative;
   list-style: none;
 }
 
 .markdown-preview .task-list-item input[type='checkbox'] {
   width: 0.92em;
   height: 0.92em;
-  margin: 0 0.5em 0 -1.25em;
+  margin: 0 0.5em 0 -1.2em;
   vertical-align: -0.12em;
-  accent-color: var(--mora-accent);
+  accent-color: var(--accent);
 }
 
 .markdown-preview table {
   display: block;
   width: max-content;
   max-width: 100%;
-  margin: 1.2em 0 1.42em;
+  margin: 1.25em 0 1.5em;
   overflow: auto;
   border-collapse: collapse;
-  font-size: 0.94em;
+  font-size: 0.93em;
 }
 
 .markdown-preview th,
 .markdown-preview td {
-  border: 1px solid var(--mora-border);
+  border-bottom: 1px solid var(--border-subtle);
   padding: 8px 11px;
   text-align: left;
   vertical-align: top;
 }
 
 .markdown-preview th {
-  color: var(--mora-text-strong);
-  background: color-mix(in srgb, var(--mora-surface-muted) 70%, var(--mora-surface-elevated));
+  color: var(--text-strong);
   font-weight: 660;
 }
 
-.markdown-preview tr:nth-child(even) td {
-  background: color-mix(in srgb, var(--mora-surface-muted) 28%, transparent);
+.markdown-preview tr:hover td {
+  background: rgba(32, 32, 28, 0.025);
 }
 
 .markdown-preview img {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 1.4em auto;
-  border-radius: var(--mora-radius-lg);
+  margin: 1.5em auto;
+  border-radius: var(--radius-lg);
 }
 
 .markdown-preview hr {
-  width: 42%;
+  width: 38%;
   height: 1px;
-  margin: 2.2em auto;
+  margin: 2.3em auto;
   border: 0;
-  background: var(--mora-border-soft);
+  background: var(--border-subtle);
 }
 
 .markdown-preview kbd {
-  border: 1px solid var(--mora-border);
+  border: 1px solid var(--border-strong);
   border-bottom-width: 2px;
-  border-radius: var(--mora-radius-xs);
+  border-radius: var(--radius-xs);
   padding: 0.08em 0.36em;
-  background: var(--mora-surface-muted);
-  font-family: var(--mora-font-mono);
+  background: rgba(36, 36, 32, 0.045);
+  font-family: var(--font-mono);
   font-size: 0.84em;
 }
 
 @media (max-width: 1180px) {
   .markdown-preview,
   .workspace.mode-split .markdown-preview {
-    max-width: var(--mora-content-width);
-    padding: 30px 28px 54px;
+    max-width: var(--content-width);
+    padding: 44px 32px 68px;
   }
 }

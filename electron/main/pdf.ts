@@ -1,9 +1,9 @@
-import { BrowserWindow, dialog } from 'electron'
+import { app, BrowserWindow, dialog } from 'electron'
 import type { BrowserWindowConstructorOptions, SaveDialogOptions } from 'electron'
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { randomUUID } from 'node:crypto'
 import { tmpdir } from 'node:os'
-import { dirname, join } from 'node:path'
+import { dirname, isAbsolute, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import type { ExportPdfPayload, ExportPdfResult, PdfExportOptions } from '../shared/ipc'
 import { defaultPdfPathForPayload, ensurePdfExtension, normalizePdfOptions, sanitizeDocumentTitle } from '../shared/pdf'
@@ -69,6 +69,22 @@ function baseHrefForSource(sourceFilePath: string | null): string {
   }
 
   return pathToFileURL(`${dirname(sourceFilePath)}/`).href
+}
+
+function normalizePayloadPaths(payload: ExportPdfPayload): ExportPdfPayload {
+  if (!payload.sourceFilePath || isAbsolute(payload.sourceFilePath)) {
+    return payload
+  }
+
+  return {
+    ...payload,
+    sourceFilePath: resolve(payload.sourceFilePath)
+  }
+}
+
+function defaultPdfDialogPath(payload: ExportPdfPayload): string {
+  const candidate = defaultPdfPathForPayload(payload)
+  return isAbsolute(candidate) ? candidate : join(app.getPath('documents'), candidate)
 }
 
 async function createPrintDocumentHtml(payload: ExportPdfPayload, options: PdfExportOptions): Promise<string> {
@@ -160,9 +176,10 @@ export async function exportPdf(
   payload: ExportPdfPayload,
   parentWindow: BrowserWindow | null
 ): Promise<ExportPdfResult> {
+  const normalizedPayload = normalizePayloadPaths(payload)
   const options: SaveDialogOptions = {
     title: 'Export PDF',
-    defaultPath: defaultPdfPathForPayload(payload),
+    defaultPath: defaultPdfDialogPath(normalizedPayload),
     filters: [
       {
         name: 'PDF Document',
@@ -179,7 +196,7 @@ export async function exportPdf(
   }
 
   const filePath = ensurePdfExtension(result.filePath)
-  const pdfBuffer = await createPdfBuffer(payload)
+  const pdfBuffer = await createPdfBuffer(normalizedPayload)
   await writeFile(filePath, pdfBuffer)
 
   return {
