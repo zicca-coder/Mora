@@ -1,5 +1,6 @@
 {
   "name": "mora",
+  "productName": "Mora",
   "version": "0.1.0",
   "description": "Mora is a minimal, beautiful and local-first Markdown editor.",
   "main": "./out/main/index.js",
@@ -16,9 +17,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "pnpm typecheck && electron-vite build",
-    "build:win": "pnpm build && electron-builder --win --x64",
-    "build:win:installer": "pnpm build && electron-builder --win nsis --x64",
-    "build:win:portable": "pnpm build && electron-builder --win portable --x64",
+    "package": "pnpm build && electron-builder --win dir --x64",
+    "dist": "pnpm build && electron-builder --win nsis --x64",
     "preview": "electron-vite preview"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "@codemirror/lang-markdown": "^6.3.4",
     "@codemirror/state": "^6.5.2",
     "@codemirror/view": "^6.38.2",
+    "@lucide/vue": "^1.32.0",
     "codemirror": "^6.0.2",
     "dompurify": "^3.2.6",
     "highlight.js": "^11.11.1",
@@ -54,14 +55,5 @@
     "vitest": "^2.1.9",
     "vue-eslint-parser": "^10.4.1",
     "vue-tsc": "^2.2.0"
-  },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "electron-winstaller"
-    ],
-    "onlyBuiltDependencies": [
-      "electron",
-      "esbuild"
-    ]
   }
 }

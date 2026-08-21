@@ -50,6 +50,7 @@ async function confirmDiscardChanges(
 }
 
 function createWindow(): void {
+  const rendererUrl = process.env.ELECTRON_RENDERER_URL
   const window = new BrowserWindow({
     width: 1180,
     height: 760,
@@ -68,8 +69,8 @@ function createWindow(): void {
   let closeConfirmationPending = false
   mainWindow = window
 
-  if (process.env.ELECTRON_RENDERER_URL) {
-    void window.loadURL(process.env.ELECTRON_RENDERER_URL)
+  if (!app.isPackaged && rendererUrl) {
+    void window.loadURL(rendererUrl)
   } else {
     void window.loadFile(join(__dirname, '../renderer/index.html'))
   }

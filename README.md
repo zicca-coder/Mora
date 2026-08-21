@@ -35,22 +35,19 @@ Mora 是一个简洁、美观、本地优先的 Markdown 桌面编辑器。当�
 - Vitest
 - pnpm
 
-## 安装
+## Development
 
 ```bash
 pnpm install
+pnpm dev
 ```
+
+`pnpm dev` starts the Vite renderer dev server and launches Electron for local development.
 
 如果 pnpm 提示 Electron 或 esbuild 的安装脚本被忽略，可以执行：
 
 ```bash
 pnpm rebuild
-```
-
-## 开发运行
-
-```bash
-pnpm dev
 ```
 
 ## 测试与验证
@@ -71,33 +68,34 @@ pnpm format
 
 Electron 原生对话框、窗口关闭和真实 PDF 导出等流程请参考 `docs/qa/manual-smoke-test.md` 手工验证。
 
-## 构建
+## Production Build
 
 ```bash
 pnpm build
 ```
 
-`pnpm build` 会先执行 TypeScript 类型检查，然后构建 Electron Main、Preload 和 Renderer。
+`pnpm build` 会先执行 TypeScript 类型检查，然后通过 electron-vite 构建 Electron Main、Preload 和 Renderer。Production renderer 会从构建后的 `out/renderer/index.html` 加载，不依赖 Vite dev server。
 
-## Windows 打包
+## Windows Packaging
 
 ```bash
-pnpm build:win
+pnpm package
+pnpm dist
 ```
 
-该命令会先执行 production build，然后在 `release/` 中生成 Windows 安装版和便携版：
+`pnpm package` 会生成 unpacked Windows 应用，用于快速验证 production packaged app：
 
 ```text
-Mora-<version>-Setup.exe
-Mora-<version>-Portable.exe
+dist/win-unpacked/Mora.exe
 ```
 
-也可以只构建其中一种产物：
+`pnpm dist` 会生成 NSIS Windows 安装包：
 
-```bash
-pnpm build:win:installer
-pnpm build:win:portable
+```text
+dist/Mora-Setup-0.1.0.exe
 ```
+
+安装包适用于正常用户安装和从 Windows 开始菜单启动；`pnpm dev` 只用于开发调试。
 
 ## 项目结构
 
@@ -114,9 +112,9 @@ Mora/
 │   ├── services/      # Markdown、PDF、文档模型等服务
 │   ├── styles/        # tokens、app、markdown、codemirror、print CSS
 │   └── types/         # Renderer 侧类型声明
-├── HandOff.md         # Agent 协作交接文档
 ├── package.json
 ├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 └── vitest.config.mts
 ```
 

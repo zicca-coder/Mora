@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MarkdownEditor from '@/components/MarkdownEditor.vue'
 import MarkdownPreview from '@/components/MarkdownPreview.vue'
+import AppSidebar from '@/components/AppSidebar.vue'
 import StatusBar from '@/components/StatusBar.vue'
 import TitleBar from '@/components/TitleBar.vue'
 import { useMarkdownDocument } from '@/composables/useMarkdownDocument'
@@ -71,35 +72,50 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="app-shell">
-    <TitleBar
-      :title="title"
-      :view-mode="viewMode"
+    <AppSidebar
+      :file-name="documentState.fileName"
+      :file-path="documentState.filePath"
+      :dirty="documentState.dirty"
+      :stats="documentStats"
       :exporting-pdf="isExportingPdf"
       @new="newDocument"
       @open="openDocument"
       @save="saveDocument"
-      @save-as="saveDocumentAs"
       @export-pdf="exportPdfDocument"
-      @change-view-mode="viewMode = $event"
     />
 
-    <main class="workspace" :class="`mode-${viewMode}`">
-      <section v-if="viewMode !== 'preview'" class="pane editor-pane" aria-label="Markdown Editor">
-        <MarkdownEditor
-          :content="documentState.content"
-          @update:content="setContent"
-          @cursor-change="setCursorPosition"
-          @save="saveDocument"
-        />
-      </section>
+    <section class="workbench" aria-label="Mora workspace">
+      <TitleBar
+        :title="title"
+        :dirty="documentState.dirty"
+        :view-mode="viewMode"
+        :exporting-pdf="isExportingPdf"
+        @new="newDocument"
+        @open="openDocument"
+        @save="saveDocument"
+        @save-as="saveDocumentAs"
+        @export-pdf="exportPdfDocument"
+        @change-view-mode="viewMode = $event"
+      />
 
-      <section v-if="viewMode !== 'editor'" class="pane preview-pane" aria-label="Markdown Preview">
-        <MarkdownPreview :content="documentState.content" />
-      </section>
-    </main>
+      <main class="workspace" :class="`mode-${viewMode}`">
+        <section v-if="viewMode !== 'preview'" class="pane editor-pane" aria-label="Markdown Editor">
+          <MarkdownEditor
+            :content="documentState.content"
+            @update:content="setContent"
+            @cursor-change="setCursorPosition"
+            @save="saveDocument"
+          />
+        </section>
 
-    <p v-if="lastError" class="error-message">{{ lastError }}</p>
+        <section v-if="viewMode !== 'editor'" class="pane preview-pane" aria-label="Markdown Preview">
+          <MarkdownPreview :content="documentState.content" />
+        </section>
+      </main>
+    </section>
 
     <StatusBar :dirty="documentState.dirty" :cursor="cursorPosition" :stats="documentStats" />
+
+    <p v-if="lastError" class="error-message">{{ lastError }}</p>
   </div>
 </template>

@@ -1,44 +1,102 @@
 :root {
-  --color-bg: #f7f7f4;
-  --color-surface: #fffffc;
-  --color-surface-muted: #f1f1ed;
-  --color-editor: #fbfbf8;
-  --color-text: #252722;
-  --color-text-strong: #121410;
-  --color-text-muted: #6d7168;
-  --color-text-subtle: #92978d;
-  --color-border: #deded6;
-  --color-border-soft: #ecece5;
-  --color-accent: #2f6f68;
-  --color-accent-strong: #1f5b54;
-  --color-accent-soft: #e4f0ed;
-  --color-danger: #8f332b;
-  --color-danger-bg: #fff1ee;
-  --color-selection: rgba(47, 111, 104, 0.2);
-  --color-focus: rgba(47, 111, 104, 0.34);
+  --mora-bg: #f7f6f3;
+  --mora-surface: #fcfbf8;
+  --mora-surface-elevated: #fffefa;
+  --mora-surface-muted: #f0efeb;
+  --mora-sidebar-bg: #f3f2ee;
+  --mora-editor-bg: #fcfbf8;
+  --mora-preview-bg: #fffefa;
+  --mora-text-primary: #20211d;
+  --mora-text-strong: #11120f;
+  --mora-text-secondary: #666b62;
+  --mora-text-tertiary: #8d9288;
+  --mora-border: #dcdad3;
+  --mora-border-soft: #ebe9e2;
+  --mora-accent: #4977a3;
+  --mora-accent-strong: #315f89;
+  --mora-accent-soft: #e8f0f7;
+  --mora-success: #54745d;
+  --mora-danger: #96362e;
+  --mora-danger-bg: #fff2ef;
+  --mora-selection: rgba(73, 119, 163, 0.2);
+  --mora-focus: rgba(73, 119, 163, 0.34);
+  --mora-shadow-popover: 0 16px 38px rgba(40, 38, 31, 0.13);
+  --mora-shadow-floating: 0 12px 28px rgba(40, 38, 31, 0.1);
 
-  --font-ui: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  --font-content: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  --font-editor: 'Cascadia Code', 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
-  --font-mono: 'Cascadia Code', 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --mora-font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --mora-font-content: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --mora-font-serif: Georgia, Cambria, 'Times New Roman', serif;
+  --mora-font-editor: 'Cascadia Code', 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --mora-font-mono: 'Cascadia Code', 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 
-  --text-xs: 11px;
-  --text-sm: 12px;
-  --text-ui: 13px;
-  --text-body: 16px;
-  --text-editor: 15px;
+  --mora-text-xs: 11px;
+  --mora-text-sm: 12px;
+  --mora-text-ui: 13px;
+  --mora-text-body: 17px;
+  --mora-text-editor: 15px;
 
-  --line-content: 1.76;
-  --line-editor: 1.68;
+  --mora-line-content: 1.82;
+  --mora-line-editor: 1.7;
 
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 8px;
+  --mora-space-1: 4px;
+  --mora-space-2: 8px;
+  --mora-space-3: 12px;
+  --mora-space-4: 16px;
+  --mora-space-5: 24px;
+  --mora-space-6: 32px;
+  --mora-space-7: 48px;
 
-  --toolbar-height: 48px;
-  --status-height: 28px;
-  --content-width: 820px;
-  --transition-fast: 140ms ease;
+  --mora-radius-xs: 4px;
+  --mora-radius-sm: 6px;
+  --mora-radius-md: 8px;
+  --mora-radius-lg: 10px;
+
+  --mora-sidebar-width: 236px;
+  --mora-titlebar-height: 54px;
+  --mora-status-height: 28px;
+  --mora-content-width: 800px;
+  --mora-transition-fast: 140ms ease;
+
+  --color-bg: var(--mora-bg);
+  --color-surface: var(--mora-surface);
+  --color-surface-muted: var(--mora-surface-muted);
+  --color-editor: var(--mora-editor-bg);
+  --color-text: var(--mora-text-primary);
+  --color-text-strong: var(--mora-text-strong);
+  --color-text-muted: var(--mora-text-secondary);
+  --color-text-subtle: var(--mora-text-tertiary);
+  --color-border: var(--mora-border);
+  --color-border-soft: var(--mora-border-soft);
+  --color-accent: var(--mora-accent);
+  --color-accent-strong: var(--mora-accent-strong);
+  --color-accent-soft: var(--mora-accent-soft);
+  --color-danger: var(--mora-danger);
+  --color-danger-bg: var(--mora-danger-bg);
+  --color-selection: var(--mora-selection);
+  --color-focus: var(--mora-focus);
+
+  --font-ui: var(--mora-font-ui);
+  --font-content: var(--mora-font-content);
+  --font-editor: var(--mora-font-editor);
+  --font-mono: var(--mora-font-mono);
+
+  --text-xs: var(--mora-text-xs);
+  --text-sm: var(--mora-text-sm);
+  --text-ui: var(--mora-text-ui);
+  --text-body: var(--mora-text-body);
+  --text-editor: var(--mora-text-editor);
+
+  --line-content: var(--mora-line-content);
+  --line-editor: var(--mora-line-editor);
+
+  --radius-xs: var(--mora-radius-xs);
+  --radius-sm: var(--mora-radius-sm);
+  --radius-md: var(--mora-radius-md);
+
+  --toolbar-height: var(--mora-titlebar-height);
+  --status-height: var(--mora-status-height);
+  --content-width: var(--mora-content-width);
+  --transition-fast: var(--mora-transition-fast);
 }
 
 * {

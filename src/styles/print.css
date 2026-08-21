@@ -71,13 +71,25 @@
 }
 
 .mora-print-document pre {
+  position: relative;
   max-width: 100%;
   break-inside: auto;
   page-break-inside: auto;
   border-color: var(--print-border);
+  padding-top: 24px;
   background: var(--print-code-bg);
   overflow: visible;
   white-space: pre-wrap;
+}
+
+.mora-print-document pre[data-language]::before {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: #7b8177;
+  content: attr(data-language);
+  font-size: 8pt;
+  text-transform: uppercase;
 }
 
 .mora-print-document pre code {

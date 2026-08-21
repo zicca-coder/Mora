@@ -13,6 +13,7 @@ const markdown = new MarkdownIt({
   typographer: true,
   highlight(code: string, language: string): string {
     const normalizedLanguage = language.trim()
+    const preLanguageAttribute = normalizedLanguage ? ` data-language="${escapeAttribute(normalizedLanguage)}"` : ''
 
     if (normalizedLanguage && hljs.getLanguage(normalizedLanguage)) {
       const highlighted = hljs.highlight(code, {
@@ -20,10 +21,10 @@ const markdown = new MarkdownIt({
         ignoreIllegals: true
       }).value
 
-      return `<pre><code class="hljs language-${escapeAttribute(normalizedLanguage)}">${highlighted}</code></pre>`
+      return `<pre${preLanguageAttribute}><code class="hljs language-${escapeAttribute(normalizedLanguage)}">${highlighted}</code></pre>`
     }
 
-    return `<pre><code class="hljs">${markdown.utils.escapeHtml(code)}</code></pre>`
+    return `<pre${preLanguageAttribute}><code class="hljs">${markdown.utils.escapeHtml(code)}</code></pre>`
   }
 }).use(taskLists, {
   enabled: true,
@@ -35,6 +36,7 @@ export function renderMarkdown(source: string): string {
   return DOMPurify.sanitize(html, {
     USE_PROFILES: {
       html: true
-    }
+    },
+    ADD_ATTR: ['data-language']
   })
 }

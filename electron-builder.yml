@@ -3,27 +3,26 @@ productName: Mora
 asar: true
 
 directories:
-  output: release
+  output: dist
   buildResources: build
 
 files:
   - out/**/*
   - src/styles/**/*.css
+  - node_modules/highlight.js/styles/github.css
   - build/icon.ico
   - package.json
 
 win:
   icon: build/icon.ico
+  signExecutable: false
   target:
     - target: nsis
       arch:
         - x64
-    - target: portable
-      arch:
-        - x64
 
 nsis:
-  artifactName: Mora-${version}-Setup.${ext}
+  artifactName: Mora-Setup-${version}.${ext}
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
@@ -31,6 +30,3 @@ nsis:
   createStartMenuShortcut: true
   shortcutName: Mora
   uninstallDisplayName: Mora
-
-portable:
-  artifactName: Mora-${version}-Portable.${ext}

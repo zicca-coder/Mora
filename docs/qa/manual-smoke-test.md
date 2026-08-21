@@ -15,10 +15,26 @@ examples/showcase.md
 ## 1. Application Startup
 
 - [ ] `pnpm dev` starts Mora without terminal errors.
-- [ ] The main window opens with the Mora toolbar, editor, preview, and status bar visible.
+- [ ] The main window opens with the Mora sidebar, tab bar, editor, preview, and status bar visible.
 - [ ] The initial window title is correct for an untitled saved document.
 
-## 2. New Document
+## 2. Refined Mac Style UI
+
+- [ ] 1366x768 layout has no severe overflow or overlapping controls.
+- [ ] 1920x1080 layout keeps the document column readable instead of stretching endlessly.
+- [ ] Sidebar feels quiet and light, with clear hover and selected states.
+- [ ] Current file is visually selected without a dark blue selected row.
+- [ ] Tab shell shows the active document title and dirty state clearly.
+- [ ] Editor is the visual focus and does not feel like an IDE.
+- [ ] Preview typography has comfortable H1, H2, paragraph, list, quote, and code block spacing.
+- [ ] Blockquotes use a subtle left accent line and do not use a heavy background.
+- [ ] Code blocks use a light background, border, rounded corners, and a language label when available.
+- [ ] View mode segmented control is usable and does not collide with file actions.
+- [ ] Status bar remains low-contrast and does not compete with the document.
+- [ ] Hover, active, focus, selected, and disabled states are visually consistent.
+- [ ] Windows native title bar controls still minimize, maximize/restore, and close normally.
+
+## 3. New Document
 
 - [ ] Click New.
 - [ ] The document content becomes empty.
@@ -26,7 +42,7 @@ examples/showcase.md
 - [ ] The status bar shows `Saved`.
 - [ ] The word and character counts update for an empty document.
 
-## 3. Markdown Editing
+## 4. Markdown Editing
 
 - [ ] Type ordinary text.
 - [ ] Type a heading.
@@ -40,14 +56,14 @@ examples/showcase.md
 - [ ] Preview updates as the document changes.
 - [ ] Dirty state changes to `Unsaved` after editing.
 
-## 4. View Mode
+## 5. View Mode
 
 - [ ] Editor mode shows only the editor.
 - [ ] Preview mode shows only rendered Markdown.
 - [ ] Split mode shows editor and preview side by side.
 - [ ] Switching view modes does not change document content or dirty state.
 
-## 5. Open
+## 6. Open
 
 - [ ] Open a `.md` file.
 - [ ] Open a `.markdown` file.
@@ -55,7 +71,7 @@ examples/showcase.md
 - [ ] The title updates to the opened file name.
 - [ ] The status bar shows `Saved` immediately after opening.
 
-## 6. Save
+## 7. Save
 
 - [ ] Edit a saved file.
 - [ ] Press `Ctrl+S` on Windows/Linux or `Cmd+S` on macOS.
@@ -64,7 +80,7 @@ examples/showcase.md
 - [ ] Confirm the file content is written to disk.
 - [ ] Dirty state clears after each successful save.
 
-## 7. Save As
+## 8. Save As
 
 - [ ] Trigger Save As from the More menu.
 - [ ] Save with a `.md` extension.
@@ -74,7 +90,7 @@ examples/showcase.md
 - [ ] The document title and file path update after Save As.
 - [ ] Dirty state clears after Save As.
 
-## 8. Unsaved Changes
+## 9. Unsaved Changes
 
 - [ ] With dirty content, click New and choose Cancel.
 - [ ] Confirm the current draft remains unchanged.
@@ -89,7 +105,7 @@ examples/showcase.md
 - [ ] With dirty content, close the Electron window and choose Discard Changes.
 - [ ] Confirm the window closes.
 
-## 9. PDF Export
+## 10. PDF Export
 
 - [ ] Open `examples/showcase.md`.
 - [ ] Edit the document without saving.
@@ -108,7 +124,7 @@ examples/showcase.md
 - [ ] Confirm images render.
 - [ ] Confirm a multi-page document paginates acceptably.
 
-## 10. External Links
+## 11. External Links
 
 - [ ] Add or open a Markdown preview containing an `https://` link.
 - [ ] Click the link.
@@ -116,7 +132,7 @@ examples/showcase.md
 - [ ] Confirm the link opens in the system browser.
 - [ ] Add or open a `mailto:` link and confirm it opens externally.
 
-## 11. Keyboard Shortcuts
+## 12. Keyboard Shortcuts
 
 - [ ] `Ctrl/Cmd+N` triggers New.
 - [ ] `Ctrl/Cmd+O` triggers Open.
@@ -124,37 +140,48 @@ examples/showcase.md
 - [ ] `Ctrl/Cmd+Shift+S` triggers Save As.
 - [ ] `Ctrl/Cmd+Shift+E` triggers Export PDF.
 
-## 12. Status Bar
+## 13. Status Bar
 
 - [ ] Status bar shows `Markdown`.
-- [ ] Status bar shows `UTF-8`.
+- [ ] Status bar shows `Local`.
 - [ ] Status bar switches between `Saved` and `Unsaved`.
 - [ ] Word count updates while editing.
+- [ ] Reading time updates while editing.
 - [ ] Character count updates while editing.
 - [ ] Cursor position updates while moving through the editor.
 
-## 13. Installed Windows Build
+## 14. Installed Windows Build
 
-- [ ] Run `pnpm build:win`.
-- [ ] Confirm `release/Mora-<version>-Setup.exe` exists.
+- [ ] Run `pnpm dist`.
+- [ ] Confirm `dist/Mora-Setup-0.1.0.exe` exists.
 - [ ] Install Mora from the setup executable.
 - [ ] Launch Mora from the Start Menu.
 - [ ] Confirm the app starts without `pnpm dev`.
 - [ ] Confirm the main window is not blank.
-- [ ] Confirm New, Open, Save, Save As, Unsaved Changes, Preview, and PDF Export work in the installed app.
+- [ ] Create a Markdown document.
+- [ ] Type Markdown content.
+- [ ] Confirm Preview renders the Markdown.
+- [ ] Open a local `.md` file.
+- [ ] Modify the file and save it.
+- [ ] Confirm Save As works.
+- [ ] Confirm PDF Export works.
+- [ ] Close Mora.
+- [ ] Launch Mora again from the Start Menu.
 - [ ] Confirm the installed app can be uninstalled from Windows.
 
-## 14. Portable Windows Build
+## 15. Unpacked Windows Build
 
-- [ ] Confirm `release/Mora-<version>-Portable.exe` exists.
-- [ ] Launch the portable executable directly.
-- [ ] Confirm the app starts without installation and without `pnpm dev`.
-- [ ] Confirm Open, editing, Save, Preview, and PDF Export work in the portable app.
+- [ ] Run `pnpm package`.
+- [ ] Confirm `dist/win-unpacked/Mora.exe` exists.
+- [ ] Launch `dist/win-unpacked/Mora.exe` directly.
+- [ ] Confirm the app starts without `pnpm dev`.
+- [ ] Confirm the main window is not blank.
+- [ ] Confirm New, Open, editing, Save, Save As, Preview, and PDF Export work in the unpacked app.
 
-## 15. Packaged PDF Export
+## 16. Packaged PDF Export
 
 - [ ] In the installed app, export a PDF from `examples/showcase.md`.
-- [ ] In the portable app, export a PDF from `examples/showcase.md`.
+- [ ] In the unpacked app, export a PDF from `examples/showcase.md`.
 - [ ] Confirm the PDF is not blank.
 - [ ] Confirm print CSS is applied.
 - [ ] Confirm Mora toolbar, editor, and status bar are not included in the PDF.
